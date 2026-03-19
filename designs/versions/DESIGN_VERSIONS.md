@@ -12,7 +12,100 @@
 
 ## 版本历史
 
-### 当前版本：v0.1.1
+### 当前版本：v0.2.1
+
+---
+
+## v0.2.1 - 2026-03-19
+
+### 修改
+
+- **完成 V1 Core MVP 页面重绘与最终保存**
+  - `homepage.pen`
+  - `skills-list.pen`
+  - `skills-detail.pen`
+  - `skills-publish.pen`
+  - `login.pen`
+  - `register.pen`
+  - `favorites.pen`
+  - `rankings.pen`
+
+### 优化
+
+- 登录页改为左侧品牌内容区 + 右侧表单卡片，并增加背景层次
+- 注册页重构为双区布局，最终收敛为少文字版本，便于后续前端实现
+- 收藏页与排行榜页统一到同一套导航、卡片、榜单视觉语言
+
+### 设计说明
+
+- 本次不是复用旧 `.pen` 内容，而是在 Pencil 中逐页重新绘制并由用户手动保存，确保文件可在 Pencil 中正常打开和继续编辑
+- 所有页面继续遵循 `designs/design-tokens.md` 的暖奶油底色、深墨文字、白色卡片与圆角系统
+- 认证页采用比业务页更聚焦的单卡布局，业务页保持统一导航与内容容器
+- 榜单页对 Top 3 使用金、银、铜三档高亮，以便代码阶段直接映射状态样式
+
+### 影响范围
+
+- 最终设计源文件已确认存在于 `designs/current/`
+- 最终截图已确认存在于 `designs/screenshots/`
+- 新增开发交接文档：`openspec/changes/archive/2026-03-19-v1-core-mvp/ui-design-handoff.md`
+
+### 代码同步
+
+- [ ] 已生成/更新React组件
+- [ ] 已应用Tailwind样式
+- [ ] 已实现响应式布局
+- [ ] 已通过测试
+
+### 备注
+
+- 本次已完成 8 个页面的真实保存与 PNG 导出，可直接作为 ClaudeCode 的开发输入
+- 页面截图与 `.pen` 文件一一对应，适合按页面拆分开发任务
+- `homepage-final.pen`、`homepage-style1.pen`、`homepage-style2.pen`、`homepage-style3.pen` 仍保留为历史探索稿，不属于本次 V1 交付范围
+
+---
+
+## v0.2.0 - 2026-03-19
+
+### 新增
+
+- **V1 Core MVP 全页面设计稿**
+  - `homepage.pen`
+  - `skills-list.pen`
+  - `skills-detail.pen`
+  - `skills-publish.pen`
+  - `login.pen`
+  - `register.pen`
+  - `favorites.pen`
+  - `rankings.pen`
+
+### 设计说明
+
+- 统一采用 `designs/design-tokens.md` 中定义的奶油色背景、鼠尾草绿主色、Fraunces + Inter 字体系统
+- 所有业务页统一使用顶部导航栏，保持首页、列表页、详情页、发布页、收藏页、排行榜页的一致入口结构
+- Skills 列表、收藏页、排行榜页复用了同一套卡片与条目视觉语言，方便后续前端组件化
+- 登录页和注册页采用居中白色卡片布局，与主站视觉一致但保持更聚焦的认证体验
+
+### 影响范围
+
+- 新建设计文件：`designs/current/homepage.pen`
+- 新建设计文件：`designs/current/skills-list.pen`
+- 新建设计文件：`designs/current/skills-detail.pen`
+- 新建设计文件：`designs/current/skills-publish.pen`
+- 新建设计文件：`designs/current/login.pen`
+- 新建设计文件：`designs/current/register.pen`
+- 新建设计文件：`designs/current/favorites.pen`
+- 新建设计文件：`designs/current/rankings.pen`
+
+### 代码同步
+
+- [ ] 已生成/更新React组件
+- [ ] 已应用Tailwind样式
+- [ ] 已实现响应式布局
+- [ ] 已通过测试
+
+### 备注
+
+- 该版本为 V1 页面设计启动记录，最终可交付结果已在 `v0.2.1` 中补齐
 
 ---
 

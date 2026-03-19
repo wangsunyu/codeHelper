@@ -1,0 +1,779 @@
+{
+  "version": "2.8",
+  "children": [
+    {
+      "type": "frame",
+      "id": "hqsb0",
+      "x": 0,
+      "y": 0,
+      "name": "skills-detail",
+      "width": 1440,
+      "fill": "#FAF8F5",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "X0Hl7",
+          "name": "nav",
+          "width": "fill_container",
+          "height": 76,
+          "fill": "#FFFFFF",
+          "stroke": {
+            "align": "outside",
+            "thickness": 1,
+            "fill": "#E8E4DF"
+          },
+          "gap": 48,
+          "padding": [
+            20,
+            80
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "w3BzM",
+              "name": "navLeft",
+              "gap": 48,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "qZBP4",
+                  "name": "logo",
+                  "gap": 10,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 6,
+                      "id": "fUgSd",
+                      "name": "logoMark",
+                      "fill": "#7C9082",
+                      "width": 18,
+                      "height": 18
+                    },
+                    {
+                      "type": "text",
+                      "id": "rOrbB",
+                      "name": "logoText",
+                      "fill": "#2D2D2D",
+                      "content": "AI助手资源平台",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "odWec",
+                  "name": "menu",
+                  "gap": 32,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "2JfUh",
+                      "name": "menuHome",
+                      "fill": "#8A8A8A",
+                      "content": "首页",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "DnRan",
+                      "name": "menuSkills",
+                      "fill": "#7C9082",
+                      "content": "Skills",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "WPjE8",
+                      "name": "menuRank",
+                      "fill": "#8A8A8A",
+                      "content": "排行榜",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "JqIti",
+              "name": "navRight",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Z3xAR",
+                  "name": "loginBtn",
+                  "height": 40,
+                  "fill": "#F5F3EF",
+                  "cornerRadius": 24,
+                  "padding": [
+                    12,
+                    20
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "8Df4E",
+                      "name": "loginText",
+                      "fill": "#2D2D2D",
+                      "content": "登录",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "zfYZU",
+                  "name": "registerBtn",
+                  "height": 40,
+                  "fill": "#7C9082",
+                  "cornerRadius": 24,
+                  "padding": [
+                    12,
+                    20
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "1rM9I",
+                      "name": "registerText",
+                      "fill": "#FFFFFF",
+                      "content": "注册",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "PGROW",
+          "name": "content",
+          "width": "fill_container",
+          "gap": 32,
+          "padding": [
+            40,
+            80,
+            80,
+            80
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "WsZrJ",
+              "name": "main",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 24,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "JiKs0",
+                  "name": "breadcrumb",
+                  "gap": 8,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "JKumJ",
+                      "name": "bc1",
+                      "fill": "#8A8A8A",
+                      "content": "首页",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "VDhhq",
+                      "name": "bcSep1",
+                      "fill": "#ADADAD",
+                      "content": ">",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "k2W8x",
+                      "name": "bc2",
+                      "fill": "#8A8A8A",
+                      "content": "Skills",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "FflyX",
+                      "name": "bcSep2",
+                      "fill": "#ADADAD",
+                      "content": ">",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "HA0lh",
+                      "name": "bc3",
+                      "fill": "#2D2D2D",
+                      "content": "PR Review Copilot",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "dbCer",
+                  "name": "hero",
+                  "width": "fill_container",
+                  "fill": "#FFFFFF",
+                  "cornerRadius": 20,
+                  "stroke": {
+                    "align": "outside",
+                    "thickness": 1,
+                    "fill": "#E8E4DF"
+                  },
+                  "layout": "vertical",
+                  "gap": 20,
+                  "padding": 28,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "MBDRL",
+                      "name": "badge",
+                      "height": 28,
+                      "fill": "#F5F3EF",
+                      "cornerRadius": 16,
+                      "padding": [
+                        6,
+                        12
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Gp4sm",
+                          "name": "badgeText",
+                          "fill": "#7C9082",
+                          "content": "coding",
+                          "fontFamily": "Inter",
+                          "fontSize": 11,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "IHMWX",
+                      "name": "heroTitle",
+                      "fill": "#2D2D2D",
+                      "content": "PR Review Copilot",
+                      "fontFamily": "Fraunces",
+                      "fontSize": 36,
+                      "fontWeight": "normal",
+                      "letterSpacing": -0.5
+                    },
+                    {
+                      "type": "text",
+                      "id": "OjlVu",
+                      "name": "heroDesc",
+                      "fill": "#5A5A5A",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "专为代码评审场景设计的 Skills，能够自动聚焦风险点、潜在回归、缺失测试和行为变更，帮助团队把 review 时间花在最关键的问题上。",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "YEgMp",
+                      "name": "publishInfo",
+                      "fill": "#8A8A8A",
+                      "content": "发布时间：2026-03-16 · 最近更新：2026-03-18",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "evHqO",
+                      "name": "useCases",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "ewD8d",
+                          "name": "useCaseTitle",
+                          "fill": "#2D2D2D",
+                          "content": "适用场景",
+                          "fontFamily": "Inter",
+                          "fontSize": 15,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "text",
+                          "id": "HPj13",
+                          "name": "useCase1",
+                          "fill": "#5A5A5A",
+                          "content": "• Pull request 评审和变更审查",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "4y7iv",
+                          "name": "useCase2",
+                          "fill": "#5A5A5A",
+                          "content": "• 发布前风险检查与测试建议",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "mV6V0",
+                          "name": "useCase3",
+                          "fill": "#5A5A5A",
+                          "content": "• 团队级 review checklist 辅助",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "yTI2l",
+                  "name": "fileInfo",
+                  "width": "fill_container",
+                  "fill": "#FFFFFF",
+                  "cornerRadius": 20,
+                  "stroke": {
+                    "align": "outside",
+                    "thickness": 1,
+                    "fill": "#E8E4DF"
+                  },
+                  "layout": "vertical",
+                  "gap": 16,
+                  "padding": 24,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "wrhaP",
+                      "name": "fileTitle",
+                      "fill": "#2D2D2D",
+                      "content": "文件信息",
+                      "fontFamily": "Fraunces",
+                      "fontSize": 28,
+                      "fontWeight": "normal",
+                      "letterSpacing": -0.5
+                    },
+                    {
+                      "type": "frame",
+                      "id": "UZsaP",
+                      "name": "infoRow1",
+                      "width": "fill_container",
+                      "gap": 20,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "3Osuy",
+                          "name": "fileNameCard",
+                          "width": "fill_container",
+                          "fill": "#F5F3EF",
+                          "cornerRadius": 16,
+                          "layout": "vertical",
+                          "gap": 6,
+                          "padding": 16,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "oo9vf",
+                              "name": "fileNameLabel",
+                              "fill": "#8A8A8A",
+                              "content": "文件名",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "text",
+                              "id": "l4bw4",
+                              "name": "fileNameValue",
+                              "fill": "#2D2D2D",
+                              "content": "pr-review-copilot-v1.2.zip",
+                              "fontFamily": "IBM Plex Mono",
+                              "fontSize": 14,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "g4XyJ",
+                          "name": "fileSizeCard",
+                          "width": 180,
+                          "fill": "#F5F3EF",
+                          "cornerRadius": 16,
+                          "layout": "vertical",
+                          "gap": 6,
+                          "padding": 16,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "DTXEB",
+                              "name": "fileSizeLabel",
+                              "fill": "#8A8A8A",
+                              "content": "大小",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "text",
+                              "id": "yeUNk",
+                              "name": "fileSizeValue",
+                              "fill": "#2D2D2D",
+                              "content": "12.4 MB",
+                              "fontFamily": "IBM Plex Mono",
+                              "fontSize": 14,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "letHG",
+                          "name": "fileTypeCard",
+                          "width": 160,
+                          "fill": "#F5F3EF",
+                          "cornerRadius": 16,
+                          "layout": "vertical",
+                          "gap": 6,
+                          "padding": 16,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "1L5PP",
+                              "name": "fileTypeLabel",
+                              "fill": "#8A8A8A",
+                              "content": "类型",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "text",
+                              "id": "ghs9R",
+                              "name": "fileTypeValue",
+                              "fill": "#2D2D2D",
+                              "content": "ZIP / Skill",
+                              "fontFamily": "IBM Plex Mono",
+                              "fontSize": 14,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "uAW9H",
+                      "name": "compatTitle",
+                      "fill": "#2D2D2D",
+                      "content": "适配说明",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "3ANMf",
+                      "name": "compatText",
+                      "fill": "#5A5A5A",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "支持 Codex / Claude Code / Cursor 等具备 MCP 或可注入 Skills 的 AI 助手环境。建议在团队仓库中搭配代码评审规范一起使用。",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "LnokM",
+              "name": "sidebar",
+              "width": 340,
+              "layout": "vertical",
+              "gap": 20,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "vlEXW",
+                  "name": "authorCard",
+                  "width": "fill_container",
+                  "fill": "#FFFFFF",
+                  "cornerRadius": 20,
+                  "stroke": {
+                    "align": "outside",
+                    "thickness": 1,
+                    "fill": "#E8E4DF"
+                  },
+                  "layout": "vertical",
+                  "gap": 16,
+                  "padding": 24,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "4lba1",
+                      "name": "authorTitle",
+                      "fill": "#2D2D2D",
+                      "content": "作者信息",
+                      "fontFamily": "Fraunces",
+                      "fontSize": 28,
+                      "fontWeight": "normal",
+                      "letterSpacing": -0.5
+                    },
+                    {
+                      "type": "text",
+                      "id": "6HmLU",
+                      "name": "authorName",
+                      "fill": "#2D2D2D",
+                      "content": "Orion Studio",
+                      "fontFamily": "Inter",
+                      "fontSize": 18,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "F1Ivq",
+                      "name": "authorBio",
+                      "fill": "#5A5A5A",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "专注于工程效率和团队协作型 AI Skills 的独立作者。",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "H3xXz",
+                      "name": "authorMeta",
+                      "fill": "#8A8A8A",
+                      "content": "已发布 18 个 Skills · 累计下载 24.8k",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "r5kFO",
+                  "name": "actionCard",
+                  "width": "fill_container",
+                  "fill": "#FFFFFF",
+                  "cornerRadius": 20,
+                  "stroke": {
+                    "align": "outside",
+                    "thickness": 1,
+                    "fill": "#E8E4DF"
+                  },
+                  "layout": "vertical",
+                  "gap": 16,
+                  "padding": 24,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "r9ISv",
+                      "name": "actionTitle",
+                      "fill": "#2D2D2D",
+                      "content": "立即获取",
+                      "fontFamily": "Fraunces",
+                      "fontSize": 28,
+                      "fontWeight": "normal",
+                      "letterSpacing": -0.5
+                    },
+                    {
+                      "type": "frame",
+                      "id": "eYpqc",
+                      "name": "downloadBtn",
+                      "width": "fill_container",
+                      "height": 48,
+                      "fill": "#7C9082",
+                      "cornerRadius": 24,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Up8rO",
+                          "name": "downloadText",
+                          "fill": "#FFFFFF",
+                          "content": "下载 Skills",
+                          "fontFamily": "Inter",
+                          "fontSize": 15,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "jFf9t",
+                      "name": "favoriteBtn",
+                      "width": "fill_container",
+                      "height": 48,
+                      "fill": "#F5F3EF",
+                      "cornerRadius": 24,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "o0C0m",
+                          "name": "favoriteText",
+                          "fill": "#2D2D2D",
+                          "content": "收藏到我的清单",
+                          "fontFamily": "Inter",
+                          "fontSize": 15,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "3fUtr",
+                      "name": "statsRow",
+                      "width": "fill_container",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "a5f8k",
+                          "name": "downloadStat",
+                          "width": "fill_container",
+                          "fill": "#F5F3EF",
+                          "cornerRadius": 16,
+                          "layout": "vertical",
+                          "gap": 6,
+                          "padding": 16,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "r3rLb",
+                              "name": "downloadStatNum",
+                              "fill": "#2D2D2D",
+                              "content": "1.8k",
+                              "fontFamily": "IBM Plex Mono",
+                              "fontSize": 22,
+                              "fontWeight": "600"
+                            },
+                            {
+                              "type": "text",
+                              "id": "2NYPS",
+                              "name": "downloadStatLabel",
+                              "fill": "#8A8A8A",
+                              "content": "下载数",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "cquld",
+                          "name": "favoriteStat",
+                          "width": "fill_container",
+                          "fill": "#F5F3EF",
+                          "cornerRadius": 16,
+                          "layout": "vertical",
+                          "gap": 6,
+                          "padding": 16,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "soswr",
+                              "name": "favoriteStatNum",
+                              "fill": "#2D2D2D",
+                              "content": "356",
+                              "fontFamily": "IBM Plex Mono",
+                              "fontSize": 22,
+                              "fontWeight": "600"
+                            },
+                            {
+                              "type": "text",
+                              "id": "ECHTh",
+                              "name": "favoriteStatLabel",
+                              "fill": "#8A8A8A",
+                              "content": "收藏数",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "ZF9o3",
+                      "name": "sidebarNote",
+                      "fill": "#8A8A8A",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "下载后包含 Skill 配置、推荐提示词和团队接入说明。",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

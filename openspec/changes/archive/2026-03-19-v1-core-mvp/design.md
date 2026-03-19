@@ -149,6 +149,14 @@ GET /api/v1/home                   首页数据（热门 Skills + 排行榜 Top5
 /rankings            排行榜页
 ```
 
+### 6.1 UI 设计交接
+
+- 最终设计源文件位于 `designs/current/`
+- 最终页面截图位于 `designs/screenshots/`
+- 代码开发交接文档位于 `openspec/changes/archive/2026-03-19-v1-core-mvp/ui-design-handoff.md`
+- ClaudeCode 开发执行文档位于 `openspec/changes/archive/2026-03-19-v1-core-mvp/claudecode-implementation-brief.md`
+- 前端开发应以该交接文档为页面结构、视觉层级和组件拆分的主要参考
+
 ### 7. 内存分配（2G 服务器）
 
 ```

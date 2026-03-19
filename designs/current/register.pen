@@ -1,0 +1,466 @@
+{
+  "version": "2.8",
+  "children": [
+    {
+      "type": "frame",
+      "id": "seTAE",
+      "x": 0,
+      "y": 0,
+      "name": "register-v2",
+      "width": 1440,
+      "height": 980,
+      "fill": "#F6F1E8",
+      "children": [
+        {
+          "type": "frame",
+          "id": "kuW7q",
+          "name": "leftPanel",
+          "width": 680,
+          "height": "fill_container",
+          "fill": {
+            "type": "gradient",
+            "gradientType": "linear",
+            "enabled": true,
+            "rotation": 135,
+            "size": {
+              "height": 1
+            },
+            "colors": [
+              {
+                "color": "#23342F",
+                "position": 0
+              },
+              {
+                "color": "#314A42",
+                "position": 1
+              }
+            ]
+          },
+          "layout": "vertical",
+          "gap": 22,
+          "padding": [
+            132,
+            86
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "obPKx",
+              "name": "leftTop",
+              "fill": "#C7D6CF",
+              "content": "CREATOR ACCESS",
+              "fontFamily": "Inter",
+              "fontSize": 13,
+              "fontWeight": "600",
+              "letterSpacing": 1.6
+            },
+            {
+              "type": "text",
+              "id": "6pbZ2",
+              "name": "leftTitle",
+              "fill": "#F8F5EF",
+              "content": "发布你的 AI 资源。",
+              "lineHeight": 1.16,
+              "fontFamily": "Inter",
+              "fontSize": 42,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "OuOhi",
+              "name": "leftFoot",
+              "fill": "#FFF6E8",
+              "cornerRadius": 999,
+              "gap": 12,
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "ellipse",
+                  "id": "1slLO",
+                  "name": "leftDot",
+                  "fill": "#D97706",
+                  "width": 10,
+                  "height": 10
+                },
+                {
+                  "type": "text",
+                  "id": "8VuXD",
+                  "name": "leftFootText",
+                  "fill": "#7C5A1C",
+                  "content": "注册后可立即上传第一个资源",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "A79YL",
+              "name": "miniNote",
+              "fill": "#FFF6E8",
+              "cornerRadius": 999,
+              "gap": 12,
+              "padding": [
+                14,
+                18
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "ellipse",
+                  "id": "dU8sB",
+                  "name": "miniDot",
+                  "fill": "#D97706",
+                  "width": 10,
+                  "height": 10
+                },
+                {
+                  "type": "text",
+                  "id": "maybN",
+                  "name": "miniText",
+                  "fill": "#7C5A1C",
+                  "content": "上传 MCP / Skills，立即开始分享",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "4KiJu",
+          "name": "rightArea",
+          "width": "fill_container",
+          "height": "fill_container",
+          "fill": "#F8F4EC",
+          "layout": "vertical",
+          "padding": 56,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "gM7fW",
+              "name": "formCard",
+              "width": 430,
+              "fill": "#FFFFFF",
+              "cornerRadius": 24,
+              "stroke": {
+                "align": "outside",
+                "thickness": 1,
+                "fill": "#E8E0D3"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "#8D7B5A26",
+                "offset": {
+                  "x": 0,
+                  "y": 24
+                },
+                "blur": 54,
+                "spread": -12
+              },
+              "layout": "vertical",
+              "gap": 16,
+              "padding": [
+                40,
+                38
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "fH56h",
+                  "name": "brandRow2",
+                  "gap": 10,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "iTCSA",
+                      "name": "brandBadge2",
+                      "width": 34,
+                      "height": 34,
+                      "fill": "#E9F1EC",
+                      "cornerRadius": 10
+                    },
+                    {
+                      "type": "text",
+                      "id": "jUAO1",
+                      "name": "brandText2",
+                      "fill": "#1F2937",
+                      "content": "AI 资源平台",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "eexwA",
+                  "name": "formTitle",
+                  "fill": "#111827",
+                  "content": "创建账号",
+                  "fontFamily": "Inter",
+                  "fontSize": 32,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "lfh8D",
+                  "name": "formDesc",
+                  "fill": "#6B7280",
+                  "content": "创建账号后即可上传与管理资源。",
+                  "lineHeight": 1.55,
+                  "fontFamily": "Inter",
+                  "fontSize": 14
+                },
+                {
+                  "type": "frame",
+                  "id": "zcjHH",
+                  "name": "nameWrap2",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "7N65T",
+                      "name": "nameLabel2",
+                      "fill": "#374151",
+                      "content": "用户名",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "xLw2H",
+                      "name": "nameField2",
+                      "width": "fill_container",
+                      "height": 52,
+                      "fill": "#F9FAFB",
+                      "cornerRadius": 12,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#D8DDE6"
+                      },
+                      "padding": [
+                        0,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "HqGpG",
+                          "name": "namePH2",
+                          "fill": "#9CA3AF",
+                          "content": "设置你的公开昵称",
+                          "fontFamily": "Inter",
+                          "fontSize": 14
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "d2Z1C",
+                  "name": "emailWrap2",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "StRcf",
+                      "name": "emailLabel2",
+                      "fill": "#374151",
+                      "content": "邮箱",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "pZ6L9",
+                      "name": "emailField2",
+                      "width": "fill_container",
+                      "height": 52,
+                      "fill": "#F9FAFB",
+                      "cornerRadius": 12,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#D8DDE6"
+                      },
+                      "padding": [
+                        0,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "5qQXa",
+                          "name": "emailPH2",
+                          "fill": "#9CA3AF",
+                          "content": "用于登录与通知",
+                          "fontFamily": "Inter",
+                          "fontSize": 14
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "lxsmt",
+                  "name": "pwdWrap2",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "3BrGt",
+                      "name": "pwdLabel2",
+                      "fill": "#374151",
+                      "content": "密码",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "iszIw",
+                      "name": "pwdField2",
+                      "width": "fill_container",
+                      "height": 52,
+                      "fill": "#F9FAFB",
+                      "cornerRadius": 12,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#D8DDE6"
+                      },
+                      "padding": [
+                        0,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "dioiY",
+                          "name": "pwdPH2",
+                          "fill": "#9CA3AF",
+                          "content": "至少 8 位字符",
+                          "fontFamily": "Inter",
+                          "fontSize": 14
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "65Lyk",
+                  "name": "confirmWrap2",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "QjMHX",
+                      "name": "confirmLabel2",
+                      "fill": "#374151",
+                      "content": "确认密码",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "9edHz",
+                      "name": "confirmField2",
+                      "width": "fill_container",
+                      "height": 52,
+                      "fill": "#F9FAFB",
+                      "cornerRadius": 12,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#D8DDE6"
+                      },
+                      "padding": [
+                        0,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "iwG9S",
+                          "name": "confirmPH2",
+                          "fill": "#9CA3AF",
+                          "content": "再次输入密码",
+                          "fontFamily": "Inter",
+                          "fontSize": 14
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "2an1Z",
+                  "name": "submit2",
+                  "width": "fill_container",
+                  "height": 56,
+                  "fill": "#111827",
+                  "cornerRadius": 14,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ACtZx",
+                      "name": "submitText2",
+                      "fill": "#FFFFFF",
+                      "content": "立即注册",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "Zketw",
+                  "name": "loginHint",
+                  "fill": "#6B7280",
+                  "content": "已有账号？ 去登录",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

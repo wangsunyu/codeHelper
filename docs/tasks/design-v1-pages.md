@@ -1,7 +1,7 @@
 # 任务：V1 MVP 全页面 UI 设计
 
 > 执行者：Codex
-> 状态：待执行
+> 状态：已完成
 > 日期：2026-03-19
 
 ---
@@ -182,9 +182,9 @@ designs/screenshots/
 
 ## 完成标准
 
-- [ ] 8 个页面全部设计完成
-- [ ] 所有 `.pen` 文件已保存到 `designs/current/`
-- [ ] 所有截图已导出到 `designs/screenshots/`
-- [ ] 设计风格与 `designs/design-tokens.md` 保持一致
-- [ ] 导航栏在所有页面保持一致
-- [ ] 更新 `designs/versions/DESIGN_VERSIONS.md` 版本记录
+- [x] 8 个页面全部设计完成
+- [x] 所有 `.pen` 文件已保存到 `designs/current/`
+- [x] 所有截图已导出到 `designs/screenshots/`
+- [x] 设计风格与 `designs/design-tokens.md` 保持一致
+- [x] 导航栏在所有页面保持一致
+- [x] 更新 `designs/versions/DESIGN_VERSIONS.md` 版本记录
