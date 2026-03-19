@@ -1,0 +1,104 @@
+# MySQL配置文件 - 针对2核2G内存服务器优化
+# 将此文件复制到 /etc/mysql/mysql.conf.d/custom.cnf
+
+[mysqld]
+# ============================================
+# 核心内存配置
+# ============================================
+# InnoDB缓冲池 - 最重要的参数
+# 设置为可用内存的60-70%（2G环境下设置512M）
+innodb_buffer_pool_size = 512M
+
+# InnoDB日志文件大小
+innodb_log_file_size = 64M
+innodb_log_buffer_size = 8M
+
+# ============================================
+# 连接配置
+# ============================================
+# 最大连接数 - 限制以防止内存耗尽
+max_connections = 50
+max_connect_errors = 100
+
+# 连接超时
+wait_timeout = 600
+interactive_timeout = 600
+
+# ============================================
+# 查询缓存（MySQL 5.7）
+# 注意：MySQL 8.0已移除查询缓存
+# ============================================
+query_cache_type = 1
+query_cache_size = 32M
+query_cache_limit = 2M
+
+# ============================================
+# 临时表配置
+# ============================================
+tmp_table_size = 32M
+max_heap_table_size = 32M
+
+# ============================================
+# 表缓存
+# ============================================
+table_open_cache = 400
+table_definition_cache = 400
+
+# ============================================
+# 线程配置
+# ============================================
+thread_cache_size = 8
+thread_stack = 256K
+
+# ============================================
+# InnoDB配置
+# ============================================
+# 文件格式
+innodb_file_format = Barracuda
+innodb_file_per_table = 1
+
+# 刷新策略
+innodb_flush_log_at_trx_commit = 2
+innodb_flush_method = O_DIRECT
+
+# IO容量
+innodb_io_capacity = 200
+innodb_io_capacity_max = 400
+
+# ============================================
+# 字符集配置
+# ============================================
+character-set-server = utf8mb4
+collation-server = utf8mb4_unicode_ci
+
+# ============================================
+# 日志配置
+# ============================================
+# 慢查询日志
+slow_query_log = 1
+slow_query_log_file = /var/log/mysql/slow.log
+long_query_time = 2
+
+# 错误日志
+log_error = /var/log/mysql/error.log
+
+# ============================================
+# 其他优化
+# ============================================
+# 排序缓冲
+sort_buffer_size = 2M
+read_buffer_size = 2M
+read_rnd_buffer_size = 2M
+join_buffer_size = 2M
+
+# 二进制日志（如果不需要主从复制可以关闭）
+# skip-log-bin
+
+# 性能模式（可以关闭以节省内存）
+performance_schema = OFF
+
+[mysql]
+default-character-set = utf8mb4
+
+[client]
+default-character-set = utf8mb4

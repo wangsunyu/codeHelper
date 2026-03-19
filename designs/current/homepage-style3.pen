@@ -1,0 +1,907 @@
+{
+  "version": "2.8",
+  "children": [
+    {
+      "type": "frame",
+      "id": "IIlrc",
+      "x": 0,
+      "y": 0,
+      "name": "page",
+      "width": 1440,
+      "height": 900,
+      "fill": "#FFFFFF",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "HmjLX",
+          "name": "nav",
+          "width": "fill_container",
+          "height": 76,
+          "fill": "#FFFFFF",
+          "gap": 48,
+          "padding": [
+            20,
+            80
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "btPic",
+              "name": "logo",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "rectangle",
+                  "cornerRadius": 24,
+                  "id": "Knngl",
+                  "name": "logoIcon",
+                  "fill": "#8B5CF6",
+                  "width": 40,
+                  "height": 40
+                },
+                {
+                  "type": "text",
+                  "id": "HPjGB",
+                  "name": "logoText",
+                  "fill": "#18181B",
+                  "content": "AI助手资源平台",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 20,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "1VnEw",
+              "name": "navMenu",
+              "gap": 32,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "G7OOI",
+                  "name": "navItem1",
+                  "fill": "#8B5CF6",
+                  "content": "首页",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "a0tsU",
+                  "name": "navItem2",
+                  "fill": "#71717A",
+                  "content": "MCP配置",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "D32K9",
+                  "name": "navItem3",
+                  "fill": "#71717A",
+                  "content": "Skills技能",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "J7ELa",
+                  "name": "navItem4",
+                  "fill": "#71717A",
+                  "content": "排行榜",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "1q9PG",
+              "name": "navRight",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "DkUTK",
+                  "name": "loginBtn",
+                  "height": 44,
+                  "fill": "#8B5CF6",
+                  "cornerRadius": 24,
+                  "padding": [
+                    12,
+                    24
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "GJACg",
+                      "name": "loginText",
+                      "fill": "#FFFFFF",
+                      "content": "登录",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "tDSdj",
+          "name": "content",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 32,
+          "padding": [
+            40,
+            80
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "fhXS0",
+              "name": "pageTitle",
+              "fill": "#18181B",
+              "content": "发现和分享 AI 助手资源",
+              "fontFamily": "Plus Jakarta Sans",
+              "fontSize": 34,
+              "fontWeight": "800"
+            },
+            {
+              "type": "text",
+              "id": "hMYCh",
+              "name": "pageSubtitle",
+              "fill": "#71717A",
+              "textGrowth": "fixed-width",
+              "width": 600,
+              "content": "探索优质的 MCP 配置和 Skills 技能包",
+              "fontFamily": "Inter",
+              "fontSize": 17
+            },
+            {
+              "type": "frame",
+              "id": "LTS7G",
+              "name": "cardGrid",
+              "width": "fill_container",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "j1Xs8",
+                  "name": "card1",
+                  "width": 400,
+                  "height": 280,
+                  "fill": "#F4F4F5",
+                  "cornerRadius": 24,
+                  "layout": "vertical",
+                  "gap": 16,
+                  "padding": 24,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "ULB2A",
+                      "name": "card1Icon",
+                      "width": 64,
+                      "height": 64,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "./images/generated-1773817191574.png",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 18
+                    },
+                    {
+                      "type": "text",
+                      "id": "KqoEm",
+                      "name": "card1Title",
+                      "fill": "#18181B",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Claude MCP Server",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 20,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "i2EAo",
+                      "name": "card1Desc",
+                      "fill": "#71717A",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "强大的 Claude MCP 服务器配置，支持多种工具和集成",
+                      "fontFamily": "Inter",
+                      "fontSize": 15
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Pk8zo",
+                      "name": "card1Footer",
+                      "width": "fill_container",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "DWbP9",
+                          "name": "card1Badge",
+                          "fill": "#8B5CF620",
+                          "cornerRadius": 20,
+                          "padding": [
+                            6,
+                            12
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "ErSfU",
+                              "name": "card1BadgeText",
+                              "fill": "#8B5CF6",
+                              "content": "1.2k 下载",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "3OqAC",
+                  "name": "card2",
+                  "width": 400,
+                  "height": 280,
+                  "fill": "#F4F4F5",
+                  "cornerRadius": 24,
+                  "layout": "vertical",
+                  "gap": 16,
+                  "padding": 24,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "q2vxh",
+                      "name": "card2Icon",
+                      "width": 64,
+                      "height": 64,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "./images/generated-1773817204517.png",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 18
+                    },
+                    {
+                      "type": "text",
+                      "id": "Kh27I",
+                      "name": "card2Title",
+                      "fill": "#18181B",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Web Scraper Skill",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 20,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "UHVkq",
+                      "name": "card2Desc",
+                      "fill": "#71717A",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "智能网页抓取技能包，支持动态内容和反爬虫",
+                      "fontFamily": "Inter",
+                      "fontSize": 15
+                    },
+                    {
+                      "type": "frame",
+                      "id": "JNCZe",
+                      "name": "card2Footer",
+                      "width": "fill_container",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "fxT8i",
+                          "name": "card2Badge",
+                          "fill": "#14B8A620",
+                          "cornerRadius": 20,
+                          "padding": [
+                            6,
+                            12
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "eWY2k",
+                              "name": "card2BadgeText",
+                              "fill": "#14B8A6",
+                              "content": "856 下载",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "l57mL",
+                  "name": "card3",
+                  "width": 400,
+                  "height": 280,
+                  "fill": "#F4F4F5",
+                  "cornerRadius": 24,
+                  "layout": "vertical",
+                  "gap": 16,
+                  "padding": 24,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "RayON",
+                      "name": "card3Icon",
+                      "width": 64,
+                      "height": 64,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "./images/generated-1773817217007.png",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 18
+                    },
+                    {
+                      "type": "text",
+                      "id": "XKSHl",
+                      "name": "card3Title",
+                      "fill": "#18181B",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Database Helper",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 20,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "rPCvn",
+                      "name": "card3Desc",
+                      "fill": "#71717A",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "数据库操作助手，支持 SQL 查询和数据分析",
+                      "fontFamily": "Inter",
+                      "fontSize": 15
+                    },
+                    {
+                      "type": "frame",
+                      "id": "giYrP",
+                      "name": "card3Footer",
+                      "width": "fill_container",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "KfBLF",
+                          "name": "card3Badge",
+                          "fill": "#F472B620",
+                          "cornerRadius": 20,
+                          "padding": [
+                            6,
+                            12
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "elkDY",
+                              "name": "card3BadgeText",
+                              "fill": "#F472B6",
+                              "content": "2.1k 下载",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "unJNU",
+              "name": "cardGrid",
+              "width": "fill_container",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Rve4X",
+                  "name": "card1",
+                  "width": 400,
+                  "height": 280,
+                  "fill": "#F4F4F5",
+                  "cornerRadius": 24,
+                  "layout": "vertical",
+                  "gap": 16,
+                  "padding": 24,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "ygV8z",
+                      "name": "card1Icon",
+                      "width": 64,
+                      "height": 64,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "./images/generated-1773817287644.png",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 18
+                    },
+                    {
+                      "type": "text",
+                      "id": "kEARc",
+                      "name": "card1Title",
+                      "fill": "#18181B",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Claude MCP Server",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 20,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "IrRF6",
+                      "name": "card1Desc",
+                      "fill": "#71717A",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "强大的 Claude MCP 服务器配置，支持多种工具和集成",
+                      "fontFamily": "Inter",
+                      "fontSize": 15
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Dcsuq",
+                      "name": "card1Footer",
+                      "width": "fill_container",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "pdAb2",
+                          "name": "card1Badge",
+                          "fill": "#E4E4E7",
+                          "cornerRadius": 20,
+                          "padding": [
+                            6,
+                            12
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "qjkyS",
+                              "name": "card1BadgeText",
+                              "fill": "#8B5CF6",
+                              "content": "1.2k 下载",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "FDToV",
+                  "name": "card2",
+                  "width": 400,
+                  "height": 280,
+                  "fill": "#F4F4F5",
+                  "cornerRadius": 24,
+                  "layout": "vertical",
+                  "gap": 16,
+                  "padding": 24,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "3Y1T5",
+                      "name": "card2Icon",
+                      "width": 64,
+                      "height": 64,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "./images/generated-1773817313558.png",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 18
+                    },
+                    {
+                      "type": "text",
+                      "id": "nVeKX",
+                      "name": "card2Title",
+                      "fill": "#18181B",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Web Scraper Skill",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 20,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "8kEj6",
+                      "name": "card2Desc",
+                      "fill": "#71717A",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "智能网页抓取技能包，支持动态内容和反爬虫",
+                      "fontFamily": "Inter",
+                      "fontSize": 15
+                    },
+                    {
+                      "type": "frame",
+                      "id": "vYlwh",
+                      "name": "card2Footer",
+                      "width": "fill_container",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "oh1eL",
+                          "name": "card2Badge",
+                          "fill": "#E4E4E7",
+                          "cornerRadius": 20,
+                          "padding": [
+                            6,
+                            12
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "AhNXu",
+                              "name": "card2BadgeText",
+                              "fill": "#14B8A6",
+                              "content": "856 下载",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "s1bxr",
+                  "name": "card3",
+                  "width": 400,
+                  "height": 280,
+                  "fill": "#F4F4F5",
+                  "cornerRadius": 24,
+                  "layout": "vertical",
+                  "gap": 16,
+                  "padding": 24,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "Jqg0q",
+                      "name": "card3Icon",
+                      "width": 64,
+                      "height": 64,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "./images/generated-1773817331061.png",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 18
+                    },
+                    {
+                      "type": "text",
+                      "id": "UaOsC",
+                      "name": "card3Title",
+                      "fill": "#18181B",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Database Helper",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 20,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "g5cAC",
+                      "name": "card3Desc",
+                      "fill": "#71717A",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "数据库操作助手，支持 SQL 查询和数据分析",
+                      "fontFamily": "Inter",
+                      "fontSize": 15
+                    },
+                    {
+                      "type": "frame",
+                      "id": "UpJ8t",
+                      "name": "card3Footer",
+                      "width": "fill_container",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "sUjRo",
+                          "name": "card3Badge",
+                          "fill": "#E4E4E7",
+                          "cornerRadius": 20,
+                          "padding": [
+                            6,
+                            12
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "QeSqV",
+                              "name": "card3BadgeText",
+                              "fill": "#F472B6",
+                              "content": "2.1k 下载",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "A1bOZ",
+              "name": "cardGrid",
+              "width": "fill_container",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "36lbl",
+                  "name": "card1",
+                  "width": 400,
+                  "height": 280,
+                  "fill": "#F4F4F5",
+                  "cornerRadius": 24,
+                  "layout": "vertical",
+                  "gap": 16,
+                  "padding": 24,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "1zWsQ",
+                      "name": "card1Icon",
+                      "width": 64,
+                      "height": 64,
+                      "fill": "#8B5CF6",
+                      "cornerRadius": 18
+                    },
+                    {
+                      "type": "text",
+                      "id": "B0UhD",
+                      "name": "card1Title",
+                      "fill": "#18181B",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Claude MCP Server",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 20,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "O1zLP",
+                      "name": "card1Desc",
+                      "fill": "#71717A",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "强大的 Claude MCP 服务器配置",
+                      "fontFamily": "Inter",
+                      "fontSize": 15
+                    },
+                    {
+                      "type": "frame",
+                      "id": "9NY4d",
+                      "name": "card1Badge",
+                      "fill": "#E4E4E7",
+                      "cornerRadius": 20,
+                      "padding": [
+                        6,
+                        12
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Em8dC",
+                          "name": "card1BadgeText",
+                          "fill": "#8B5CF6",
+                          "content": "1.2k 下载",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "dWysp",
+                  "name": "card2",
+                  "width": 400,
+                  "height": 280,
+                  "fill": "#F4F4F5",
+                  "cornerRadius": 24,
+                  "layout": "vertical",
+                  "gap": 16,
+                  "padding": 24,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "L2jNC",
+                      "name": "card2Icon",
+                      "width": 64,
+                      "height": 64,
+                      "fill": "#14B8A6",
+                      "cornerRadius": 18
+                    },
+                    {
+                      "type": "text",
+                      "id": "8aWFb",
+                      "name": "card2Title",
+                      "fill": "#18181B",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Web Scraper Skill",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 20,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "ECx9l",
+                      "name": "card2Desc",
+                      "fill": "#71717A",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "智能网页抓取技能包",
+                      "fontFamily": "Inter",
+                      "fontSize": 15
+                    },
+                    {
+                      "type": "frame",
+                      "id": "0UjAy",
+                      "name": "card2Badge",
+                      "fill": "#E4E4E7",
+                      "cornerRadius": 20,
+                      "padding": [
+                        6,
+                        12
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "yx64i",
+                          "name": "card2BadgeText",
+                          "fill": "#14B8A6",
+                          "content": "856 下载",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "IpCJS",
+                  "name": "card3",
+                  "width": 400,
+                  "height": 280,
+                  "fill": "#F4F4F5",
+                  "cornerRadius": 24,
+                  "layout": "vertical",
+                  "gap": 16,
+                  "padding": 24,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "NTUkx",
+                      "name": "card3Icon",
+                      "width": 64,
+                      "height": 64,
+                      "fill": "#F472B6",
+                      "cornerRadius": 18
+                    },
+                    {
+                      "type": "text",
+                      "id": "nVdj0",
+                      "name": "card3Title",
+                      "fill": "#18181B",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Database Helper",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 20,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "uRKhl",
+                      "name": "card3Desc",
+                      "fill": "#71717A",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "数据库操作助手",
+                      "fontFamily": "Inter",
+                      "fontSize": 15
+                    },
+                    {
+                      "type": "frame",
+                      "id": "EoStR",
+                      "name": "card3Badge",
+                      "fill": "#E4E4E7",
+                      "cornerRadius": 20,
+                      "padding": [
+                        6,
+                        12
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "b1ypc",
+                          "name": "card3BadgeText",
+                          "fill": "#F472B6",
+                          "content": "2.1k 下载",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

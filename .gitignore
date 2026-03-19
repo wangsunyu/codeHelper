@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+
+# Claude
+.claude/
+
+# Dependencies
+node_modules/
+
+# IDE
+.idea/
+.vscode/
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.local
