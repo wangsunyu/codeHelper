@@ -52,5 +52,6 @@ export interface IHomeData {
     totalSkills: number;
     totalDownloads: number;
     totalUsers: number;
+    activeAuthors: number;
   };
 }

@@ -14,85 +14,111 @@ export function Navbar() {
   }
 
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>
-    `text-sm font-ui transition-colors ${
+    `relative text-[14px] font-medium font-ui transition-colors ${
       isActive
-        ? 'text-text-primary font-semibold border-b-2 border-primary pb-0.5'
+        ? 'text-primary'
         : 'text-text-secondary hover:text-text-primary'
     }`;
 
   return (
-    <nav className="h-[76px] px-20 flex items-center justify-between border-b border-border bg-white sticky top-0 z-50">
-      <Link to="/" className="flex items-center gap-2">
-        <div className="w-8 h-8 rounded-icon bg-primary flex items-center justify-center text-white text-sm font-bold font-ui">
-          A
-        </div>
-        <span className="text-[20px] font-semibold font-display text-text-primary tracking-tight">
-          AISkills
-        </span>
-      </Link>
+    <nav className="sticky top-0 z-50 border-b border-border bg-white/94 backdrop-blur-md">
+      <div className="mx-auto flex h-[72px] w-full max-w-[1280px] items-center justify-between px-5 sm:px-8 lg:px-[72px]">
+        <Link to="/" className="flex items-center gap-3">
+          <div className="h-4 w-4 rounded-[6px] bg-primary" />
+          <span className="text-[18px] font-semibold font-ui tracking-[-0.01em] text-text-primary">
+            AI助手资源平台
+          </span>
+        </Link>
 
-      <div className="flex items-center gap-8">
-        <NavLink to="/skills" className={navLinkClass}>
-          Skills
-        </NavLink>
-        <NavLink to="/rankings" className={navLinkClass}>
-          排行榜
-        </NavLink>
-      </div>
-
-      <div className="flex items-center gap-3">
-        {user ? (
-          <>
-            <Link
-              to="/skills/publish"
-              className="h-9 px-4 rounded-btn text-sm font-medium font-ui bg-[#2D2D2D] text-white hover:opacity-80 transition-opacity inline-flex items-center justify-center"
-            >
-              发布
-            </Link>
-            <Link
-              to="/favorites"
-              className="h-9 px-4 rounded-btn text-sm font-medium font-ui bg-bg-surface text-text-primary border border-border hover:bg-bg-muted transition-colors inline-flex items-center justify-center"
-            >
+        <div className="hidden items-center gap-10 md:flex">
+          <NavLink to="/" end className={navLinkClass}>
+            首页
+          </NavLink>
+          <NavLink to="/skills" className={navLinkClass}>
+            Skills
+          </NavLink>
+          <NavLink to="/rankings" className={navLinkClass}>
+            排行榜
+          </NavLink>
+          {user ? (
+            <NavLink to="/favorites" className={navLinkClass}>
               收藏
-            </Link>
-            <div
-              className="relative"
-              onMouseEnter={() => setDropdownOpen(true)}
-              onMouseLeave={() => setDropdownOpen(false)}
-            >
-              <button className="text-sm font-ui text-text-secondary hover:text-text-primary transition-colors">
-                {user.username}
-              </button>
-              {dropdownOpen && (
-                <div className="absolute right-0 top-full pt-1 w-32 z-50">
-                  <div className="bg-white border border-border rounded-xl shadow-lg py-1">
-                    <button
-                      onClick={handleLogout}
-                      className="w-full text-left px-4 py-2 text-sm font-ui text-text-secondary hover:text-text-primary hover:bg-bg-muted transition-colors"
-                    >
-                      退出登录
-                    </button>
+            </NavLink>
+          ) : null}
+        </div>
+
+        <div className="flex items-center gap-3">
+          {user ? (
+            <>
+              <Link
+                to="/skills/publish"
+                className="inline-flex h-10 items-center justify-center rounded-btn border border-border bg-bg-surface px-5 text-[14px] font-medium font-ui text-text-primary transition-colors hover:bg-bg-muted"
+              >
+                发布
+              </Link>
+              <Link
+                to="/favorites"
+                className="inline-flex h-10 items-center justify-center rounded-btn bg-primary px-5 text-[14px] font-medium font-ui text-white shadow-[0_8px_18px_rgba(142,160,143,0.18)] transition-opacity hover:opacity-90"
+              >
+                收藏
+              </Link>
+              <div
+                className="relative"
+                onMouseEnter={() => setDropdownOpen(true)}
+                onMouseLeave={() => setDropdownOpen(false)}
+              >
+                <button className="inline-flex h-10 items-center rounded-btn border border-border bg-white px-5 text-[14px] font-medium font-ui text-text-primary">
+                  {user.username}
+                </button>
+                {dropdownOpen && (
+                  <div className="absolute right-0 top-full z-50 w-36 pt-2">
+                    <div className="rounded-[18px] border border-border bg-white p-1 shadow-[0_16px_32px_rgba(0,0,0,0.08)]">
+                      <button
+                        onClick={handleLogout}
+                        className="w-full rounded-[14px] px-4 py-2 text-left text-sm font-ui text-text-secondary transition-colors hover:bg-bg-surface hover:text-text-primary"
+                      >
+                        退出登录
+                      </button>
+                    </div>
                   </div>
-                </div>
-              )}
-            </div>
-          </>
-        ) : (
-          <>
-            <Link
-              to="/login"
-              className="h-9 px-4 rounded-btn text-sm font-medium font-ui text-text-secondary hover:text-text-primary transition-colors inline-flex items-center justify-center"
-            >
-              登录
-            </Link>
-            <Link
-              to="/register"
-              className="h-9 px-4 rounded-btn text-sm font-medium font-ui bg-[#2D2D2D] text-white hover:opacity-80 transition-opacity inline-flex items-center justify-center"
-            >
-              注册
-            </Link>
-          </>
-        )}
+                )}
+              </div>
+            </>
+          ) : (
+            <>
+              <Link
+                to="/login"
+                className="inline-flex h-10 items-center justify-center rounded-btn border border-border bg-bg-surface px-6 text-[14px] font-medium font-ui text-text-primary transition-colors hover:bg-bg-muted"
+              >
+                登录
+              </Link>
+              <Link
+                to="/register"
+                className="inline-flex h-10 items-center justify-center rounded-btn bg-primary px-6 text-[14px] font-medium font-ui text-white shadow-[0_8px_18px_rgba(142,160,143,0.18)] transition-opacity hover:opacity-90"
+              >
+                注册
+              </Link>
+            </>
+          )}
+        </div>
+      </div>
+      <div className="border-t border-transparent md:hidden">
+        <div className="mx-auto flex max-w-[1280px] items-center gap-6 px-5 py-3 text-[14px] font-medium font-ui text-text-secondary sm:px-8 lg:px-[72px]">
+          <NavLink to="/" end className={navLinkClass}>
+            首页
+          </NavLink>
+          <NavLink to="/skills" className={navLinkClass}>
+            Skills
+          </NavLink>
+          <NavLink to="/rankings" className={navLinkClass}>
+            排行榜
+          </NavLink>
+          {user ? (
+            <NavLink to="/favorites" className={navLinkClass}>
+              收藏
+            </NavLink>
+          ) : null}
+        </div>
       </div>
     </nav>
   );

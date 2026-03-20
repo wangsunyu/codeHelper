@@ -71,14 +71,25 @@ export async function incrementDownload(id: number): Promise<void> {
   await pool.query('UPDATE skills SET download_count = download_count + 1 WHERE id = ?', [id]);
 }
 
-export async function getStats(): Promise<{ totalSkills: number; totalDownloads: number; totalUsers: number }> {
+export async function getStats(): Promise<{
+  totalSkills: number;
+  totalDownloads: number;
+  totalUsers: number;
+  activeAuthors: number;
+}> {
   const [s] = await pool.query<RowDataPacket[]>(
-    "SELECT COUNT(*) AS totalSkills, SUM(download_count) AS totalDownloads FROM skills WHERE status='active'"
+    `SELECT
+      COUNT(*) AS totalSkills,
+      SUM(download_count) AS totalDownloads,
+      COUNT(DISTINCT user_id) AS activeAuthors
+     FROM skills
+     WHERE status='active'`
   );
   const [u] = await pool.query<RowDataPacket[]>('SELECT COUNT(*) AS totalUsers FROM users');
   return {
     totalSkills: (s[0] as { totalSkills: number }).totalSkills,
     totalDownloads: (s[0] as { totalDownloads: number }).totalDownloads || 0,
     totalUsers: (u[0] as { totalUsers: number }).totalUsers,
+    activeAuthors: (s[0] as { activeAuthors: number }).activeAuthors || 0,
   };
 }

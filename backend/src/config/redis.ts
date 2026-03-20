@@ -6,8 +6,13 @@ export const redis = new Redis({
   port: env.redis.port,
   password: env.redis.password,
   lazyConnect: true,
+  maxRetriesPerRequest: 1,
+  enableOfflineQueue: false,
+  retryStrategy(times) {
+    return times > 1 ? null : 200;
+  },
 });
 
 redis.on('error', (err) => {
-  console.error('Redis error:', err.message);
+  console.error('Redis error:', err.message || 'connection failed');
 });

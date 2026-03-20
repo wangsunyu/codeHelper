@@ -1,46 +1,70 @@
-import { useState, useEffect } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
-import { skillService } from '../services/skill';
+import { useEffect, useState } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { favoriteService } from '../services/favorite';
+import { skillService } from '../services/skill';
 import { useAuth } from '../hooks/useAuth';
-import { Button } from '../components/common/Button';
 import type { ISkill } from '../types';
-import { formatFileSize, formatDate, formatNumber, CATEGORY_LABELS } from '../utils/format';
+import { formatDate, formatFileSize, formatNumber } from '../utils/format';
+
+function formatDownloadMetric(value: number) {
+  if (value >= 1000) return `${(value / 1000).toFixed(1)}k`;
+  return String(value);
+}
+
+function fileTypeLabel(fileName: string) {
+  const ext = fileName.split('.').pop()?.toUpperCase();
+  return ext ? `${ext} / Skill` : 'Skill';
+}
 
 export function SkillDetailPage() {
   const { id } = useParams<{ id: string }>();
-  const { user } = useAuth();
   const navigate = useNavigate();
+  const { user } = useAuth();
   const [skill, setSkill] = useState<ISkill | null>(null);
   const [loading, setLoading] = useState(true);
+  const [favoriteLoading, setFavoriteLoading] = useState(false);
   const [isFavorited, setIsFavorited] = useState(false);
-  const [favLoading, setFavLoading] = useState(false);
 
   useEffect(() => {
     if (!id) return;
-    skillService.detail(parseInt(id))
+
+    setLoading(true);
+    skillService
+      .detail(Number(id))
       .then(res => setSkill(res.data.data))
       .catch(() => navigate('/skills'))
       .finally(() => setLoading(false));
-  }, [id]);
+  }, [id, navigate]);
 
   async function handleFavorite() {
-    if (!user) return navigate('/login');
+    if (!user) {
+      navigate('/login');
+      return;
+    }
     if (!skill) return;
-    setFavLoading(true);
+
+    setFavoriteLoading(true);
     try {
       if (isFavorited) {
         await favoriteService.remove(skill.id);
+        setSkill(current => current ? { ...current, favorite_count: Math.max(0, current.favorite_count - 1) } : current);
         setIsFavorited(false);
-        setSkill(s => s ? { ...s, favorite_count: s.favorite_count - 1 } : s);
       } else {
         await favoriteService.add(skill.id);
+        setSkill(current => current ? { ...current, favorite_count: current.favorite_count + 1 } : current);
         setIsFavorited(true);
-        setSkill(s => s ? { ...s, favorite_count: s.favorite_count + 1 } : s);
       }
     } finally {
-      setFavLoading(false);
+      setFavoriteLoading(false);
     }
+  }
+
+  async function handleDelete() {
+    if (!skill) return;
+    if (!window.confirm('确定删除这个 Skill？')) return;
+
+    await skillService.remove(skill.id);
+    navigate('/skills');
   }
 
   function handleDownload() {
@@ -48,91 +72,158 @@ export function SkillDetailPage() {
     window.location.href = skillService.downloadUrl(skill.id);
   }
 
-  if (loading) return <div className="py-20 text-center text-text-secondary font-ui text-sm">加载中...</div>;
+  if (loading) {
+    return (
+      <div className="px-5 py-14 text-center text-[16px] font-ui text-text-secondary sm:px-8 lg:px-[64px]">
+        正在加载详情...
+      </div>
+    );
+  }
+
   if (!skill) return null;
 
   return (
-    <div className="max-w-[1440px] mx-auto px-20 py-10">
-      {/* 面包屑 */}
-      <div className="flex items-center gap-2 text-sm font-ui text-text-secondary mb-8">
-        <Link to="/" className="hover:text-text-primary transition-colors">首页</Link>
-        <span>/</span>
-        <Link to="/skills" className="hover:text-text-primary transition-colors">Skills</Link>
-        <span>/</span>
-        <span className="text-text-primary truncate max-w-xs">{skill.title}</span>
+    <div className="mx-auto max-w-[1280px] px-5 py-8 sm:px-8 lg:px-[64px] lg:py-10">
+      <div className="mb-6 flex items-center gap-3 text-[14px] font-medium font-ui text-text-secondary">
+        <Link to="/" className="hover:text-text-primary">首页</Link>
+        <span>›</span>
+        <Link to="/skills" className="hover:text-text-primary">Skills</Link>
+        <span>›</span>
+        <span className="text-text-primary">{skill.title}</span>
       </div>
 
-      <div className="grid grid-cols-3 gap-10">
-        {/* 主内容区 */}
-        <div className="col-span-2 flex flex-col gap-6">
-          <div>
-            <span className="text-[11px] font-medium font-ui px-3 py-1 rounded-badge bg-primary-tint text-primary inline-block mb-3">
-              {CATEGORY_LABELS[skill.category]}
-            </span>
-            <h1 className="text-[28px] font-semibold font-display text-text-primary tracking-tight leading-tight mb-3">
+      <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
+        <div className="space-y-5">
+          <section className="rounded-[28px] border border-border bg-white px-6 py-6 shadow-[0_4px_18px_rgba(77,69,54,0.03)] lg:px-7 lg:py-7">
+            <div className="inline-flex rounded-btn bg-bg-surface px-4 py-2 text-[13px] font-medium font-ui lowercase text-primary">
+              {skill.category}
+            </div>
+
+            <h1 className="mt-6 text-[32px] leading-[1.3] font-medium font-display text-text-primary sm:text-[38px]">
               {skill.title}
             </h1>
-            {skill.description && (
-              <p className="text-[15px] text-text-body font-ui leading-relaxed">{skill.description}</p>
-            )}
-          </div>
 
-          {/* 文件信息 */}
-          <div className="bg-white rounded-card border border-border p-6">
-            <h3 className="text-sm font-semibold font-ui text-text-primary mb-4">文件信息</h3>
-            <div className="grid grid-cols-2 gap-4 text-sm font-ui">
-              <div><span className="text-text-secondary">文件名</span><p className="text-text-primary mt-1 font-mono text-xs">{skill.file_name}</p></div>
-              <div><span className="text-text-secondary">文件大小</span><p className="text-text-primary mt-1">{formatFileSize(skill.file_size)}</p></div>
-              <div><span className="text-text-secondary">下载次数</span><p className="text-text-primary mt-1">{formatNumber(skill.download_count)}</p></div>
-              <div><span className="text-text-secondary">发布时间</span><p className="text-text-primary mt-1">{formatDate(skill.created_at)}</p></div>
+            <p className="mt-5 max-w-[820px] text-[16px] leading-[1.85] font-ui text-text-secondary sm:text-[18px]">
+              {skill.description || '为当前工作流准备的可复用 Skill 配置，下载后即可直接接入你的 AI 助手环境。'}
+            </p>
+
+            <p className="mt-5 text-[15px] font-ui text-text-secondary">
+              发布时间：{formatDate(skill.created_at)} · 最近更新：{formatDate(skill.created_at)}
+            </p>
+
+            <div className="mt-7">
+              <h2 className="text-[18px] font-semibold font-ui text-text-primary">适用场景</h2>
+              <ul className="mt-4 space-y-3 text-[16px] leading-[1.8] font-ui text-text-secondary">
+                <li>• 用于 {skill.category} 类 AI 助手工作流复用</li>
+                <li>• 支持团队共享下载与快速接入</li>
+                <li>• 适合与 MCP 配置和提示词模板一起使用</li>
+              </ul>
             </div>
-          </div>
-        </div>
+          </section>
 
-        {/* 侧边栏 */}
-        <div className="flex flex-col gap-4">
-          {/* 操作区 */}
-          <div className="bg-white rounded-card border border-border p-6 flex flex-col gap-3">
-            <Button size="lg" className="w-full" onClick={handleDownload}>
-              ↓ 下载文件
-            </Button>
-            <Button
-              size="lg"
-              variant="secondary"
-              className="w-full"
-              loading={favLoading}
-              onClick={handleFavorite}
-            >
-              {isFavorited ? '♥ 已收藏' : '♡ 收藏'}
-            </Button>
-            <div className="flex justify-between text-xs text-text-secondary font-ui pt-2 border-t border-border-subtle">
-              <span>↓ {formatNumber(skill.download_count)} 次下载</span>
-              <span>♥ {formatNumber(skill.favorite_count)} 次收藏</span>
-            </div>
-          </div>
+          <section className="rounded-[28px] border border-border bg-white px-6 py-6 shadow-[0_4px_18px_rgba(77,69,54,0.03)] lg:px-7 lg:py-7">
+            <h2 className="text-[28px] leading-[1.3] font-medium font-display text-text-primary">
+              文件信息
+            </h2>
 
-          {/* 作者卡片 */}
-          <div className="bg-white rounded-card border border-border p-6">
-            <h3 className="text-sm font-semibold font-ui text-text-primary mb-3">作者</h3>
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-bg-surface flex items-center justify-center text-sm font-semibold font-ui text-text-primary">
-                {skill.author_username[0].toUpperCase()}
+            <div className="mt-6 grid gap-4 md:grid-cols-[1.5fr_0.55fr_0.5fr]">
+              <div className="rounded-[18px] bg-bg-surface px-5 py-4">
+                <p className="text-[14px] font-medium font-ui text-text-secondary">文件名</p>
+                <p className="mt-2 break-all text-[20px] font-semibold font-ui text-text-primary">
+                  {skill.file_name}
+                </p>
               </div>
-              <span className="text-sm font-medium font-ui text-text-primary">{skill.author_username}</span>
+              <div className="rounded-[18px] bg-bg-surface px-5 py-4">
+                <p className="text-[14px] font-medium font-ui text-text-secondary">大小</p>
+                <p className="mt-2 text-[20px] font-semibold font-ui text-text-primary">
+                  {formatFileSize(skill.file_size)}
+                </p>
+              </div>
+              <div className="rounded-[18px] bg-bg-surface px-5 py-4">
+                <p className="text-[14px] font-medium font-ui text-text-secondary">类型</p>
+                <p className="mt-2 text-[20px] font-semibold font-ui text-text-primary">
+                  {fileTypeLabel(skill.file_name)}
+                </p>
+              </div>
             </div>
-          </div>
 
-          {/* 作者删除 */}
-          {user && user.id === skill.user_id && (
-            <Button variant="danger" size="md" className="w-full" onClick={async () => {
-              if (!confirm('确定删除这个 Skill？')) return;
-              await skillService.remove(skill.id);
-              navigate('/skills');
-            }}>
-              删除
-            </Button>
-          )}
+            <div className="mt-6">
+              <h3 className="text-[18px] font-semibold font-ui text-text-primary">适配说明</h3>
+              <p className="mt-3 text-[16px] leading-[1.85] font-ui text-text-secondary">
+                支持 Codex / Claude Code / Cursor 等具备 MCP 或可注入 Skills 的 AI 助手环境。建议在团队仓库中搭配代码评审规范一起使用。
+              </p>
+            </div>
+          </section>
         </div>
+
+        <aside className="space-y-4">
+          <section className="rounded-[28px] border border-border bg-white px-6 py-6 shadow-[0_4px_18px_rgba(77,69,54,0.03)]">
+            <h2 className="text-[26px] leading-[1.3] font-medium font-display text-text-primary">
+              作者信息
+            </h2>
+            <p className="mt-5 text-[20px] font-semibold font-ui text-text-primary">
+              {skill.author_username} Studio
+            </p>
+            <p className="mt-4 text-[16px] leading-[1.8] font-ui text-text-secondary">
+              专注于工程效率和团队协作型 AI Skills 的独立作者。
+            </p>
+            <p className="mt-5 text-[15px] font-ui text-text-secondary">
+              已发布 1 个 Skills · 累计下载 {formatDownloadMetric(skill.download_count)}k
+            </p>
+          </section>
+
+          <section className="rounded-[28px] border border-border bg-white px-6 py-6 shadow-[0_4px_18px_rgba(77,69,54,0.03)]">
+            <h2 className="text-[26px] leading-[1.3] font-medium font-display text-text-primary">
+              立即获取
+            </h2>
+
+            <button
+              type="button"
+              onClick={handleDownload}
+              className="mt-6 inline-flex h-[52px] w-full items-center justify-center rounded-btn bg-primary px-6 text-[16px] font-medium font-ui text-white transition-opacity hover:opacity-90"
+            >
+              下载 Skills
+            </button>
+
+            <button
+              type="button"
+              onClick={handleFavorite}
+              disabled={favoriteLoading}
+              className="mt-4 inline-flex h-[52px] w-full items-center justify-center rounded-btn bg-bg-surface px-6 text-[16px] font-medium font-ui text-text-primary transition-colors hover:bg-bg-muted disabled:opacity-60"
+            >
+              {favoriteLoading ? '处理中...' : isFavorited ? '已收藏到我的清单' : '收藏到我的清单'}
+            </button>
+
+            <div className="mt-4 grid grid-cols-2 gap-4">
+              <div className="rounded-[18px] bg-bg-surface px-4 py-4">
+                <div className="text-[18px] font-semibold font-ui text-text-primary">
+                  {formatDownloadMetric(skill.download_count)}
+                </div>
+                <div className="mt-1 text-[14px] font-ui text-text-secondary">下载数</div>
+              </div>
+              <div className="rounded-[18px] bg-bg-surface px-4 py-4">
+                <div className="text-[18px] font-semibold font-ui text-text-primary">
+                  {formatNumber(skill.favorite_count)}
+                </div>
+                <div className="mt-1 text-[14px] font-ui text-text-secondary">收藏数</div>
+              </div>
+            </div>
+
+            <p className="mt-5 text-[15px] leading-[1.8] font-ui text-text-secondary">
+              下载后包含 Skill 配置、推荐提示词和团队接入说明。
+            </p>
+
+            {user && user.id === skill.user_id ? (
+              <button
+                type="button"
+                onClick={handleDelete}
+                className="mt-5 inline-flex h-[46px] w-full items-center justify-center rounded-btn bg-[#d65f5f] px-6 text-[15px] font-medium font-ui text-white transition-opacity hover:opacity-90"
+              >
+                删除这个 Skill
+              </button>
+            ) : null}
+          </section>
+        </aside>
       </div>
     </div>
   );

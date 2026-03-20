@@ -5,12 +5,41 @@ import { redis } from '../config/redis';
 import * as UserModel from '../models/user.model';
 import { AppError } from '../middlewares/error';
 
+const refreshTokenStore = new Map<number, string>();
+
 function signAccess(userId: number) {
   return jwt.sign({ userId }, env.jwt.secret, { expiresIn: env.jwt.expiresIn } as jwt.SignOptions);
 }
 
 function signRefresh(userId: number) {
   return jwt.sign({ userId }, env.jwt.refreshSecret, { expiresIn: env.jwt.refreshExpiresIn } as jwt.SignOptions);
+}
+
+async function storeRefreshToken(userId: number, token: string) {
+  try {
+    await redis.set(`refresh_token:${userId}`, token, 'EX', 60 * 60 * 24 * 30);
+  } catch {
+    refreshTokenStore.set(userId, token);
+  }
+}
+
+async function readRefreshToken(userId: number) {
+  try {
+    return await redis.get(`refresh_token:${userId}`);
+  } catch {
+    return refreshTokenStore.get(userId) || null;
+  }
+}
+
+async function removeRefreshToken(userId: number) {
+  try {
+    await redis.del(`refresh_token:${userId}`);
+  } catch {
+    refreshTokenStore.delete(userId);
+    return;
+  }
+
+  refreshTokenStore.delete(userId);
 }
 
 export async function register(username: string, email: string, password: string) {
@@ -32,7 +61,7 @@ export async function login(email: string, password: string) {
   const accessToken = signAccess(user.id);
   const refreshToken = signRefresh(user.id);
 
-  await redis.set(`refresh_token:${user.id}`, refreshToken, 'EX', 60 * 60 * 24 * 30);
+  await storeRefreshToken(user.id, refreshToken);
 
   return { accessToken, refreshToken, user: { id: user.id, username: user.username, email: user.email } };
 }
@@ -45,7 +74,7 @@ export async function refresh(token: string) {
     throw new AppError('无效的刷新令牌', 401, 'INVALID_REFRESH_TOKEN');
   }
 
-  const stored = await redis.get(`refresh_token:${payload.userId}`);
+  const stored = await readRefreshToken(payload.userId);
   if (stored !== token) throw new AppError('刷新令牌已失效', 401, 'REFRESH_TOKEN_EXPIRED');
 
   const accessToken = signAccess(payload.userId);
@@ -53,5 +82,5 @@ export async function refresh(token: string) {
 }
 
 export async function logout(userId: number) {
-  await redis.del(`refresh_token:${userId}`);
+  await removeRefreshToken(userId);
 }

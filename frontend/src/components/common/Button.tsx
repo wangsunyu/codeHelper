@@ -7,15 +7,15 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export function Button({ variant = 'primary', size = 'md', loading, children, className = '', disabled, ...props }: ButtonProps) {
-  const base = 'inline-flex items-center justify-center font-ui font-medium transition-opacity disabled:opacity-50 disabled:cursor-not-allowed';
+  const base = 'inline-flex items-center justify-center font-ui font-medium tracking-[-0.01em] transition-all disabled:opacity-50 disabled:cursor-not-allowed';
   const sizes = {
-    lg: 'h-12 px-7 text-[15px] rounded-btn',
-    md: 'h-10 px-5 text-sm rounded-btn',
+    lg: 'h-[52px] px-7 text-[15px] rounded-btn',
+    md: 'h-10 px-5 text-[14px] rounded-btn',
   };
   const variants = {
-    primary: 'bg-[#2D2D2D] text-white hover:opacity-80',
+    primary: 'bg-primary text-white shadow-[0_6px_14px_rgba(142,160,143,0.18)] hover:opacity-90',
     secondary: 'bg-bg-surface text-text-primary border border-border hover:bg-bg-muted',
-    danger: 'bg-red-500 text-white hover:opacity-80',
+    danger: 'bg-[#d86b6b] text-white hover:opacity-90',
   };
   return (
     <button
