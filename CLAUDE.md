@@ -559,7 +559,85 @@ designs/
 详细的设计流程、规范、注意事项等，请查看：
 - 📐 [完整设计指南](./docs/design-guide.md)
 
+## 服务器配置
+
+### 服务器信息
+- **IP**: 39.103.65.215
+- **系统**: Alibaba Cloud Linux 3
+- **用户**: ecs-assist-user
+- **Git 仓库**: https://github.com/wangsunyu/codeHelper.git
+
+### 数据库密码（生产环境）
+```
+DB_USER=app_user
+DB_PASSWORD=vR52Gqf50jJBvFxvF7c3
+DB_NAME=ai_platform
+
+REDIS_PASSWORD=u0SCC2cNrlGXl0UjMrEO
+
+JWT_SECRET=27hufG5F0qLcQPwtOxrabacEAYBG2CKV
+JWT_REFRESH_SECRET=uQID5xvAEXQf7xi4nWkUfy1ffzMUM565
+```
+
+### 文档
+- 📋 [部署总结](./docs/deployment.md) - 完整部署记录、服务器信息、注意事项
+
+## 远程部署能力
+
+Claude 可以直接通过 SSH 连接服务器执行操作，无需人工介入。
+
+### 触发方式
+
+| 用户说 | Claude 执行的操作 |
+|--------|-----------------|
+| 帮我更新线上部署 | 拉取最新代码、重新构建、重启服务 |
+| 查看线上日志 | SSH 连接后执行 `pm2 logs api` |
+| 线上服务挂了 | 检查 PM2 状态和错误日志，自动修复 |
+| 查看服务器状态 | 检查内存、磁盘、进程状态 |
+
+### SSH 连接方式（Claude 内部使用）
+
+```bash
+# 免密登录（本地 ~/.ssh/id_rsa 已授权）
+ssh ecs-assist-user@39.103.65.215 "command"
+
+# 上传文件
+scp local_file ecs-assist-user@39.103.65.215:/home/ecs-assist-user/app/
+```
+
+### 一键更新部署
+
+代码推送到 GitHub 后，告诉 Claude「帮我更新线上部署」，
+Claude 会执行服务器上的更新脚本：
+
+```bash
+# 服务器上的部署脚本路径
+/home/ecs-assist-user/app/scripts/deploy.sh
+```
+
+脚本流程：`git pull` → `npm install` → `npm run build`（前后端）→ `pm2 restart` → `nginx reload`
+
+### 常用运维命令（Claude 可直接执行）
+
+```bash
+# 查看后端日志
+ssh ecs-assist-user@39.103.65.215 "pm2 logs api --lines 50 --nostream"
+
+# 查看服务状态
+ssh ecs-assist-user@39.103.65.215 "pm2 list && sudo systemctl status nginx"
+
+# 查看系统资源
+ssh ecs-assist-user@39.103.65.215 "free -h && df -h /"
+
+# 重启后端
+ssh ecs-assist-user@39.103.65.215 "pm2 restart api"
+
+# 查看 Nginx 错误日志
+ssh ecs-assist-user@39.103.65.215 "sudo tail -20 /var/log/nginx/error.log"
+```
+
 ## 更新日志
 
 - 2024-03-18: 初始化项目文档，完成需求梳理和技术选型
 - 2026-03-18: 添加Pencil UI设计方案，建立设计版本管理体系
+- 2026-03-20: 完成生产环境首次部署，配置远程部署能力
