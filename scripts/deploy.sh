@@ -61,8 +61,10 @@ else
   echo "    前端依赖无变更，跳过"
 fi
 
-# 5. 创建本次 release 目录
+# 5. 创建本次 release 目录（并软链 node_modules，避免复制 200MB+）
 mkdir -p "$APP_DIR/releases/$VERSION/backend" "$APP_DIR/releases/$VERSION/frontend"
+ln -sfn "$APP_DIR/backend/node_modules" "$APP_DIR/releases/$VERSION/backend/node_modules"
+ln -sfn "$APP_DIR/frontend/node_modules" "$APP_DIR/releases/$VERSION/frontend/node_modules"
 
 # 6. 构建后端
 echo ">>> [4/9] 构建后端..."
