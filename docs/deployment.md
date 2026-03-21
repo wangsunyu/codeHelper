@@ -36,23 +36,31 @@
 
 ```
 /home/ecs-assist-user/
-├── app/                        # 项目代码（来自 GitHub）
-│   ├── backend/
-│   │   ├── dist/               # 编译后的后端代码
-│   │   ├── .env                # 生产环境变量（不提交 Git）
-│   │   └── ...
-│   ├── frontend/
-│   │   ├── dist/               # 打包后的前端静态文件
-│   │   └── ...
-│   └── uploads/                # 用户上传文件
-└── .pm2/                       # PM2 配置和日志
+├── app/
+│   ├── current/                    # 当前运行版本（软链 → releases/<版本>）
+│   ├── releases/                   # 历史版本（保留最近 5 个）
+│   │   └── 20260321_140530/
+│   │       ├── backend/dist/       # 后端构建产物
+│   │       ├── backend/node_modules -> ../../backend/node_modules
+│   │       ├── frontend/dist/      # 前端构建产物
+│   │       └── .version            # 版本元数据
+│   ├── backups/                    # 数据库备份（保留最近 5 个）
+│   ├── scripts/
+│   │   ├── deploy.sh               # 主部署脚本
+│   │   └── rollback.sh             # 一键回滚脚本
+│   ├── shared/
+│   │   ├── .env                    # 跨版本共享环境变量
+│   │   └── uploads/                # 用户上传文件
+│   ├── backend/                    # 源码（含 node_modules）
+│   └── frontend/                   # 源码（含 node_modules）
+└── .pm2/                           # PM2 配置和日志
 ```
 
 ## Nginx 配置
 
 配置文件：`/etc/nginx/conf.d/app.conf`
 
-- `/` → 前端静态文件（`/home/ecs-assist-user/app/frontend/dist`）
+- `/` → 前端静态文件（`/home/ecs-assist-user/app/current/frontend/dist`）
 - `/api` → 反向代理到后端（`http://127.0.0.1:3000`）
 - `/uploads` → 用户上传文件目录
 
@@ -94,14 +102,30 @@ pm2 save
 
 ## 更新部署
 
-每次推送代码到 GitHub 后，让 Claude 执行远程更新：
-```
-帮我更新线上部署
-```
-或运行脚本：
+**方式：git push 到服务器（push-to-deploy）**
+
 ```bash
-bash /home/ecs-assist-user/app/scripts/deploy.sh
+# 本地执行，推送代码并自动触发构建+部署
+make deploy
 ```
+
+服务器 git hook 自动执行完整流程：
+DB 备份 → 智能 npm install（仅依赖变更时） → 构建前后端 → 版本化 release → 切换软链 → PM2 重启 → 健康检查（失败自动回滚）
+
+## 回滚
+
+```bash
+# 回滚到上一版本
+make rollback
+
+# 回滚到指定版本
+make rollback VERSION=20260321_113940
+
+# 查看所有可用版本
+make versions
+```
+
+> 回滚脚本会询问是否同时回滚数据库，大多数情况下只需回滚代码。
 
 ## 注意事项
 

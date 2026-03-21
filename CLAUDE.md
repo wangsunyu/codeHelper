@@ -607,15 +607,33 @@ scp local_file ecs-assist-user@39.103.65.215:/home/ecs-assist-user/app/
 
 ### 一键更新部署
 
-代码推送到 GitHub 后，告诉 Claude「帮我更新线上部署」，
-Claude 会执行服务器上的更新脚本：
+**部署方式：git push 到服务器（push-to-deploy）**
 
 ```bash
-# 服务器上的部署脚本路径
-/home/ecs-assist-user/app/scripts/deploy.sh
+# 本地推送代码，服务器自动构建+部署
+make deploy
+# 等价于：git push prod main
 ```
 
-脚本流程：`git pull` → `npm install` → `npm run build`（前后端）→ `pm2 restart` → `nginx reload`
+服务器 git hook 自动执行：DB 备份 → 智能 npm install → 构建前后端 → 版本化 release → 切换软链 → PM2 重启 → 健康检查（失败自动回滚）
+
+```bash
+# 手动在服务器执行（不含 git pull）
+ssh ecs-assist-user@39.103.65.215 "bash ~/app/scripts/deploy.sh"
+```
+
+### 回滚
+
+```bash
+# 回滚到上一版本
+make rollback
+
+# 回滚到指定版本
+make rollback VERSION=20260321_113940
+
+# 查看可用版本
+make versions
+```
 
 ### 常用运维命令（Claude 可直接执行）
 
