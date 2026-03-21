@@ -82,7 +82,7 @@ export function FavoritesPage() {
         ) : skills.length > 0 ? (
           <>
             <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-              {skills.slice(0, 3).map((skill, index) => (
+              {skills.map((skill, index) => (
                 <article
                   key={skill.id}
                   className="rounded-[24px] border border-border bg-white p-4 shadow-[0_4px_14px_rgba(77,69,54,0.03)]"

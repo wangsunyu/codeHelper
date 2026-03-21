@@ -15,13 +15,12 @@ export async function findByUser(userId: number): Promise<ISkill[]> {
 }
 
 export async function add(userId: number, skillId: number): Promise<void> {
-  await pool.query<ResultSetHeader>(
+  const [result] = await pool.query<ResultSetHeader>(
     'INSERT IGNORE INTO favorites (user_id, skill_id) VALUES (?, ?)', [userId, skillId]
   );
-  await pool.query(
-    'UPDATE skills SET favorite_count = favorite_count + 1 WHERE id = ? AND NOT EXISTS (SELECT 1 FROM favorites WHERE user_id = ? AND skill_id = ?)',
-    [skillId, userId, skillId]
-  );
+  if (result.affectedRows > 0) {
+    await pool.query('UPDATE skills SET favorite_count = favorite_count + 1 WHERE id = ?', [skillId]);
+  }
 }
 
 export async function remove(userId: number, skillId: number): Promise<boolean> {

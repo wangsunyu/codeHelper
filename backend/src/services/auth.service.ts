@@ -63,7 +63,7 @@ export async function login(email: string, password: string) {
 
   await storeRefreshToken(user.id, refreshToken);
 
-  return { accessToken, refreshToken, user: { id: user.id, username: user.username, email: user.email } };
+  return { accessToken, refreshToken, user: { id: user.id, username: user.username, email: user.email, avatar_url: user.avatar_url, created_at: user.created_at } };
 }
 
 export async function refresh(token: string) {

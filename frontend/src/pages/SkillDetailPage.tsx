@@ -24,6 +24,7 @@ export function SkillDetailPage() {
   const [loading, setLoading] = useState(true);
   const [favoriteLoading, setFavoriteLoading] = useState(false);
   const [isFavorited, setIsFavorited] = useState(false);
+  const [actionError, setActionError] = useState('');
 
   useEffect(() => {
     if (!id) return;
@@ -36,6 +37,13 @@ export function SkillDetailPage() {
       .finally(() => setLoading(false));
   }, [id, navigate]);
 
+  useEffect(() => {
+    if (!id || !user) return;
+    favoriteService.check(Number(id))
+      .then(res => setIsFavorited(res.data.data.isFavorited))
+      .catch(() => {});
+  }, [id, user]);
+
   async function handleFavorite() {
     if (!user) {
       navigate('/login');
@@ -44,6 +52,7 @@ export function SkillDetailPage() {
     if (!skill) return;
 
     setFavoriteLoading(true);
+    setActionError('');
     try {
       if (isFavorited) {
         await favoriteService.remove(skill.id);
@@ -54,6 +63,8 @@ export function SkillDetailPage() {
         setSkill(current => current ? { ...current, favorite_count: current.favorite_count + 1 } : current);
         setIsFavorited(true);
       }
+    } catch {
+      setActionError('操作失败，请稍后重试');
     } finally {
       setFavoriteLoading(false);
     }
@@ -63,8 +74,12 @@ export function SkillDetailPage() {
     if (!skill) return;
     if (!window.confirm('确定删除这个 Skill？')) return;
 
-    await skillService.remove(skill.id);
-    navigate('/skills');
+    try {
+      await skillService.remove(skill.id);
+      navigate('/skills');
+    } catch {
+      setActionError('删除失败，请稍后重试');
+    }
   }
 
   function handleDownload() {
@@ -168,7 +183,7 @@ export function SkillDetailPage() {
               专注于工程效率和团队协作型 AI Skills 的独立作者。
             </p>
             <p className="mt-5 text-[15px] font-ui text-text-secondary">
-              已发布 1 个 Skills · 累计下载 {formatDownloadMetric(skill.download_count)}k
+              已发布 1 个 Skills · 累计下载 {formatDownloadMetric(skill.download_count)}
             </p>
           </section>
 
@@ -193,6 +208,10 @@ export function SkillDetailPage() {
             >
               {favoriteLoading ? '处理中...' : isFavorited ? '已收藏到我的清单' : '收藏到我的清单'}
             </button>
+
+            {actionError ? (
+              <p className="mt-3 text-[13px] font-ui text-red-500">{actionError}</p>
+            ) : null}
 
             <div className="mt-4 grid grid-cols-2 gap-4">
               <div className="rounded-[18px] bg-bg-surface px-4 py-4">
