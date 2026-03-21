@@ -9,6 +9,7 @@ const COOKIE_OPTS = {
   httpOnly: true,
   secure: process.env.NODE_ENV === 'production',
   sameSite: 'lax' as const,
+  path: '/',
 };
 
 export const registerValidation = [
@@ -47,8 +48,8 @@ export async function login(req: Request, res: Response, next: NextFunction) {
 export async function logout(req: AuthRequest, res: Response, next: NextFunction) {
   try {
     if (req.userId) await AuthService.logout(req.userId);
-    res.clearCookie('access_token');
-    res.clearCookie('refresh_token');
+    res.clearCookie('access_token', { path: '/' });
+    res.clearCookie('refresh_token', { path: '/' });
     ok(res, null, '已登出');
   } catch (e) { next(e); }
 }
