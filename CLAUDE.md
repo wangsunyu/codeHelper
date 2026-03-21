@@ -581,6 +581,7 @@ JWT_REFRESH_SECRET=uQID5xvAEXQf7xi4nWkUfy1ffzMUM565
 
 ### 文档
 - 📋 [部署总结](./docs/deployment.md) - 完整部署记录、服务器信息、注意事项
+- 📁 [部署历史](./deploys/) - 每次部署的详细记录
 
 ## 远程部署能力
 
@@ -658,4 +659,4 @@ ssh ecs-assist-user@39.103.65.215 "sudo tail -20 /var/log/nginx/error.log"
 
 - 2024-03-18: 初始化项目文档，完成需求梳理和技术选型
 - 2026-03-18: 添加Pencil UI设计方案，建立设计版本管理体系
-- 2026-03-20: 完成生产环境首次部署，配置远程部署能力
+- 2026-03-21: 搭建版本化部署体系（push-to-deploy、releases、自动回滚），详见 [deploys/2026-03-21.md](./deploys/2026-03-21.md)
