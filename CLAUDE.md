@@ -581,6 +581,7 @@ JWT_REFRESH_SECRET=uQID5xvAEXQf7xi4nWkUfy1ffzMUM565
 
 ### 文档
 - 📋 [部署总结](./docs/deployment.md) - 完整部署记录、服务器信息、注意事项
+- 📖 [**部署经验手册**](./deploys/DEPLOY_GUIDE.md) - 部署流程、踩坑记录、验证清单（**部署前必读**）
 - 📁 [部署历史](./deploys/) - 每次部署的详细记录
 
 ## 远程部署能力
