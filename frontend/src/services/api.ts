@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { AUTH_CACHE_KEY } from '../constants/auth';
 
 const api = axios.create({
   baseURL: '/api/v1',
@@ -17,7 +18,7 @@ api.interceptors.response.use(
   res => res,
   async err => {
     const original = err.config;
-    if (err.response?.status === 401 && !original._retry && !original.url?.startsWith('/auth/')) {
+    if (err.response?.status === 401 && !original._retry && !original.url?.startsWith('/auth/refresh')) {
       if (isRefreshing) {
         return new Promise((resolve, reject) => {
           failedQueue.push({ resolve, reject });
@@ -31,6 +32,8 @@ api.interceptors.response.use(
         return api(original);
       } catch (e) {
         processQueue(e);
+        localStorage.removeItem(AUTH_CACHE_KEY);
+        window.location.href = '/login';
         return Promise.reject(e);
       } finally {
         isRefreshing = false;

@@ -2,6 +2,7 @@ import { createContext, useContext, useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
 import type { IUser } from '../types';
 import { authService } from '../services/auth';
+import { AUTH_CACHE_KEY } from '../constants/auth';
 
 interface AuthContextType {
   user: IUser | null;
@@ -10,8 +11,6 @@ interface AuthContextType {
   logout: () => Promise<void>;
   setUser: (user: IUser | null) => void;
 }
-
-const AUTH_CACHE_KEY = 'auth_user';
 
 function getCachedUser(): IUser | null {
   try {

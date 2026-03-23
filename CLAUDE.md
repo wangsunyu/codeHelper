@@ -563,9 +563,11 @@ designs/
 
 ### 服务器信息
 - **IP**: 39.103.65.215
+- **域名**: https://app.wangsunyu56.top
 - **系统**: Alibaba Cloud Linux 3
 - **用户**: ecs-assist-user
 - **Git 仓库**: https://github.com/wangsunyu/codeHelper.git
+- **SSL**: Let's Encrypt 自动续期（证书路径 `/etc/letsencrypt/live/app.wangsunyu56.top/`）
 
 ### 数据库密码（生产环境）
 ```
@@ -661,3 +663,4 @@ ssh ecs-assist-user@39.103.65.215 "sudo tail -20 /var/log/nginx/error.log"
 - 2024-03-18: 初始化项目文档，完成需求梳理和技术选型
 - 2026-03-18: 添加Pencil UI设计方案，建立设计版本管理体系
 - 2026-03-21: 搭建版本化部署体系（push-to-deploy、releases、自动回滚），详见 [deploys/2026-03-21.md](./deploys/2026-03-21.md)
+- 2026-03-23: 配置 HTTPS（Let's Encrypt + 域名 app.wangsunyu56.top）；优化 token 刷新拦截器，提取 AUTH_CACHE_KEY 共享常量
